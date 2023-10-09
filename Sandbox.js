@@ -1,211 +1,128 @@
-//alert("Hello World");
+// Function Declaration
+// function greet(){
+//   console.log('Hello, there');
+// }
 
-let age = 25;
-let year  = 2023;
+// function expression
+const speak = function(){
+  console.log('Good Day!')
+};
 
-console.log(age , year);
 
-age = 30;
-console.log(age);
+speak();
 
-const points = 100;
-// this will give an error because constant varriable cannot be overriden
-// points = 99;
-console.log(points);
+// greet();
 
-// Strings
-console.log('Hello World');
+// javascript can hoist functions but it cannot hoist function expressions
+// Hoistng : Hoisting means we can call the functions first even its definition is wtritten below  in the code
 
-let Email = 'mario@ninja.com';
-console.log(Email);
+// Functions  expression arguments & parameters
+const func = function(name, time){
+  console.log(`Good ${time}, ${name}!`);
+};
 
-// string concatenation
-let firstName = 'Rahul';
-let lastName = 'Kapoor';
+func('Rahul', 'Morning');
 
-let fullName = firstName + ' ' + lastName;
-console.log(fullName);
+// Returning value
+const calcArea = function(radius){
+  return 3.14 * radius ** 2;
+};
 
-// getting characters
-console.log(fullName[0]);
+let area = calcArea(5);
+console.log(area);
 
-// getting string length
-console.log(fullName.length);
+const calcVol = function(radius){
+  return 3.14*radius**3;
+}
 
-// string methods
-console.log(fullName.toUpperCase());
-let re = fullName.toLowerCase();
-console.log(re);
+let vol = calcVol(5);
+console.log(vol);
 
-// Common String methods
+// Arrow Function
+const calculateArea = (radius) => {
+  return 3.14 * radius ** 2;
+}
 
-let res = Email.lastIndexOf('n');
-console.log(res);
+console.log(calculateArea(5));
 
-res = Email.slice(2, 5);
-console.log(res);
+// practice arrow function
 
-res = Email.substring(2, 5);
-console.log(res);
+// const greet = function(){
+//   return 'Hello world!';
+// }
 
-res = Email.replace('n' , 'w');
-console.log(res);
+const greet = () => 'Hello World!';
 
-// Javascript on numbers
+console.log(greet());
 
-let radius = 10;
-let pi = 3.14;
+// const bill = function(products, tax){
+//   let total = 0;
+//   for(let i = 0; i < products.length; i++){
+//     total += products[i] + products[i]*tax; 
+//   }
+//   return total;
+// };
 
-// console.log(radius, pi);
+const bill = (products, tax) => {
+  let total = 0;
+  for(let i = 0; i < products.length; i++){
+    total += products[i] + products[i]*tax; 
+  }
+  return total;
+};
 
-// math operators - +, -, *, /, **, %
+console.log(bill([10, 15, 30], 0.2));
 
-// console.log(10 / 2);
-// let result = radius % 3;
-// let result = pi * radius**2;
+const naam = 'shaun';
 
-// order of operation - B I D M A S
+// functions
+const res = () => naam;
+console.log(res());
 
-// let result = 5 * (10 - 3)**2;
+/// methods
+let resultOne = naam.toUpperCase();
+console.log(resultOne);
 
-// console.log(result);
+// Callbacks & foreach
+// We can also pass function as a arguement in a function in that case the function we pass in is called a callback function.
 
-// shorthands
-let likes = 10;
+const myFunc = (callBackFunc) => {
+  // do something
+  let value = 50;
+  callBackFunc(value);
+};
 
-// likes = likes + 1;
-// likes++;
+myFunc(function(value){
+  // do something
+  console.log(value);
+})
 
-// likes = likes + 10;
-// likes += 10;
+//OR
 
-// likes *= 2;
-// likes /= 2;
+// myFunc((value) => {
+//   // do something
+//   console.log(value);
+// })
 
-// console.log(likes);
+let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
 
-// NaN - not a number
+people.forEach(function(person, index){
+  // do something
+  console.log(index, person);
+})
 
-// console.log(5 / 'hello');
-// console.log(5 * 'hello');
+// OR
 
-let result = 'the blog has ' + likes + ' likes.';
-console.log(result);
+// people.forEach((person, index) => {
+//   // do something
+//   console.log(index, person);
+// })
 
-// template strings
-const title = 'Best reads of 2019';
-const author = 'Mario';
-const like = 30;
+// or 
+// we can define callback function outide function calling and use it in calling
 
-// concatenation way
+const logPerson = (person, index) => {
+  console.log(`${index} - Hello ${person}`);
+}
 
-// let result = 'The blog called ' + title + ' by ' + author + ' has ' + like + ' likes';
-// console.log(result);
-
-// template string way
-
-// let result = `The blog called ${title} by ${author} has ${like} likes`;
-// console.log(result);
-
-// creating html templates
-let html = `
-  <h2>${title}</h2>
-  <p>By ${author}</p>
-  <span>This blog has ${likes} likes</span>
-`;
-
-console.log(html);
-
-// arrays
-
-let ninjas = ['shaun', 'ryu', 'chun-li'];
-
-// ninjas[1] = 'ken';
-// console.log(ninjas[1]);
-
-// let ages = [20, 25, 30, 35];
-// console.log(ages[2]);
-
-// let random = ['shaun', 'crystal', 30, 20];
-
-// array length
-// console.log(ninjas.length);
-
-// array methods
-
-// let result = ninjas.join(',');
-// let result = ninjas.indexOf('chun-li');
-// let result = ninjas.concat(['ken', 'crystal']);
-let ans = ninjas.push('ken');
-let ans1 = ninjas.pop();
-
-console.log(ans);
-console.log(ninjas);
-
-// null & undefined
-let Age = null;
-
-console.log(Age, Age + 3, `the age is ${Age}`);
-
-// booleans & comparisons
-// console.log(true, false, 'true', 'false');
-
-// methods can return booleans
-// let email = 'luigi@thenetninja.co.uk';
-// let names = ['mario', 'luigi', 'toad'];
-
-// let result = email.includes('@');
-// let result = names.includes('luigi');
-
-// console.log(result);
-
-// comparison operators
-age = 25;
-
-console.log(age == 25);
-console.log(age == 30);
-console.log(age != 30);
-console.log(age > 20);
-console.log(age < 20);
-console.log(age <= 25);
-console.log(age >= 25);
-
-let Name = 'shaun';
-
-console.log(Name == 'shaun');
-console.log(Name == 'Shaun');
-console.log(Name > 'crystal');
-console.log(Name > 'Shaun');
-console.log(Name > 'Crystal');
-
-age = 25;
-
-// loose comparison (different types can still be equal)
-
-// console.log(age == 25);
-// console.log(age == '25');
-// console.log(age != 25);
-// console.log(age != '25');
-
-// strict comparison (different types cannot be equal)
-
-// console.log(age === 25);
-// console.log(age === '25');
-// console.log(age !== 25);
-// console.log(age !== '25');
-
-// type conversion
-// let score = '100';
-
-// score = Number(score);
-// console.log(score + 1);
-// console.log(typeof score);
-
-// let result = Number('hello');
-// let result = String(50);
-// let result = Boolean(100);
-// let result = Boolean(0);
-// let result = Boolean('0');
-result = Boolean('');
-
-console.log(result, typeof result);
+people.forEach(logPerson);
