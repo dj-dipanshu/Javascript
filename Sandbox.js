@@ -1,128 +1,100 @@
-// Function Declaration
-// function greet(){
-//   console.log('Hello, there');
-// }
+// Objec literals
 
-// function expression
-const speak = function(){
-  console.log('Good Day!')
+// We can also store objects in arrays
+const sets = [
+    {title : 'Sufi set', likes : '30K'},
+    {title : 'Bolywood set', likes : '20K'}
+]
+console.log(sets);
+
+let singer = {
+    Name : 'Raman Kapoor',
+    age : 32,
+    email : 'ramankapoor@singer.com',
+    location : 'Mumbai',
+    // sets : ['Sufi set', 'Bollywood set'],
+
+    sets : [
+        {title : 'Sufi set', likes : '30K'},
+    {title : 'Bolywood set', likes : '20K'}
+    ],
+
+    Inhouse : function(){
+        console.log('Singer in the house');
+    },
+
+    Outhouse : function(){
+        console.log('Singer is not in house');
+    },
+
+    logSets : function(){
+        // console.log(this.sets);
+        console.log("Raman has two types of sets:");
+        let  i = 1;
+        this.sets.forEach((sets) => {
+            console.log(`${i}.  ${sets.title} ${sets.likes}`);
+            i++;
+        })
+    },
+
+    // logSets : () => {
+    //     // console.log(this.sets);
+    //     console.log("Raman has two types of sets:");
+    //     let  i = 1;
+    //     this.sets.forEach((sets) => {
+    //         console.log(`${i}.  ${sets}`);
+    //         i++;
+    //     })
+    // }
+    // Note : When we use arrow function then methods will not works
+    logi : () => {
+        console.log(this);
+    }
+    // when we use arrow functions then this will always points to global window object.
+    /// Thats why we cannot use this keyword with arrow functions 
+    
 };
 
+console.log(singer);
+console.log(singer.Name);
 
-speak();
+singer.age = 35;
+console.log(singer.age);
 
-// greet();
+console.log(typeof singer);
 
-// javascript can hoist functions but it cannot hoist function expressions
-// Hoistng : Hoisting means we can call the functions first even its definition is wtritten below  in the code
+// singer.Inhouse();
+// singer.Outhouse();
 
-// Functions  expression arguments & parameters
-const func = function(name, time){
-  console.log(`Good ${time}, ${name}!`);
-};
+singer.logSets();
 
-func('Rahul', 'Morning');
+singer.logi();
 
-// Returning value
-const calcArea = function(radius){
-  return 3.14 * radius ** 2;
-};
+// Inbuilt Objects
 
-let area = calcArea(5);
-console.log(area);
+console.log(Math);
+console.log(Math.PI);
+console.log(Math.E);
 
-const calcVol = function(radius){
-  return 3.14*radius**3;
-}
+const area = 3.1;
 
-let vol = calcVol(5);
-console.log(vol);
+console.log(Math.round(area));
+console.log(Math.floor(area));
+console.log(Math.ceil(area));
+console.log(Math.trunc(area));
 
-// Arrow Function
-const calculateArea = (radius) => {
-  return 3.14 * radius ** 2;
-}
+// To generate a random number
+const random = Math.random();
+console.log(random);
+console.log(Math.round(random * 100));
 
-console.log(calculateArea(5));
+/*
+    Primitive Types             Reference Types
 
-// practice arrow function
-
-// const greet = function(){
-//   return 'Hello world!';
-// }
-
-const greet = () => 'Hello World!';
-
-console.log(greet());
-
-// const bill = function(products, tax){
-//   let total = 0;
-//   for(let i = 0; i < products.length; i++){
-//     total += products[i] + products[i]*tax; 
-//   }
-//   return total;
-// };
-
-const bill = (products, tax) => {
-  let total = 0;
-  for(let i = 0; i < products.length; i++){
-    total += products[i] + products[i]*tax; 
-  }
-  return total;
-};
-
-console.log(bill([10, 15, 30], 0.2));
-
-const naam = 'shaun';
-
-// functions
-const res = () => naam;
-console.log(res());
-
-/// methods
-let resultOne = naam.toUpperCase();
-console.log(resultOne);
-
-// Callbacks & foreach
-// We can also pass function as a arguement in a function in that case the function we pass in is called a callback function.
-
-const myFunc = (callBackFunc) => {
-  // do something
-  let value = 50;
-  callBackFunc(value);
-};
-
-myFunc(function(value){
-  // do something
-  console.log(value);
-})
-
-//OR
-
-// myFunc((value) => {
-//   // do something
-//   console.log(value);
-// })
-
-let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
-
-people.forEach(function(person, index){
-  // do something
-  console.log(index, person);
-})
-
-// OR
-
-// people.forEach((person, index) => {
-//   // do something
-//   console.log(index, person);
-// })
-
-// or 
-// we can define callback function outide function calling and use it in calling
-
-const logPerson = (person, index) => {
-  console.log(`${index} - Hello ${person}`);
-}
-
-people.forEach(logPerson);
+    - numbers                   - all types of objects
+    - strings                   - object literals    
+    - booleans                  - arrays
+    - null                      - functions
+    - undefined                 - dates
+    - symbols                   - all other objects
+*/
