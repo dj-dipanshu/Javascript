@@ -1,100 +1,74 @@
-// Objec literals
+// DOM
 
-// We can also store objects in arrays
-const sets = [
-    {title : 'Sufi set', likes : '30K'},
-    {title : 'Bolywood set', likes : '20K'}
-]
-console.log(sets);
+// const para = document.querySelector('p');
+const para = document.querySelector('div.error');
+console.log(para);
 
-let singer = {
-    Name : 'Raman Kapoor',
-    age : 32,
-    email : 'ramankapoor@singer.com',
-    location : 'Mumbai',
-    // sets : ['Sufi set', 'Bollywood set'],
+const paras = document.querySelectorAll('p');
+// console.log(paras);
+console.log(paras[2]);
+paras.forEach(paras => {
+    console.log(paras);
+})
 
-    sets : [
-        {title : 'Sufi set', likes : '30K'},
-    {title : 'Bolywood set', likes : '20K'}
-    ],
+//get an element by id
+const title = document.getElementById('page-title');
+console.log(title);
 
-    Inhouse : function(){
-        console.log('Singer in the house');
-    },
+//get an element by their tag name
+const errors = document.getElementsByClassName('error');
+console.log(errors);
+console.log(errors[0]);
+// we cannot use foreach loop on html collection
 
-    Outhouse : function(){
-        console.log('Singer is not in house');
-    },
+// get elements by their tag name
+const res = document.getElementsByTagName('p');
+console.log(res);
+// console.log(res[2]);
 
-    logSets : function(){
-        // console.log(this.sets);
-        console.log("Raman has two types of sets:");
-        let  i = 1;
-        this.sets.forEach((sets) => {
-            console.log(`${i}.  ${sets.title} ${sets.likes}`);
-            i++;
-        })
-    },
+// How we change the text and html inside element
+// const x = document.querySelector('p');
+// console.log(x.innerText);
 
-    // logSets : () => {
-    //     // console.log(this.sets);
-    //     console.log("Raman has two types of sets:");
-    //     let  i = 1;
-    //     this.sets.forEach((sets) => {
-    //         console.log(`${i}.  ${sets}`);
-    //         i++;
-    //     })
-    // }
-    // Note : When we use arrow function then methods will not works
-    logi : () => {
-        console.log(this);
-    }
-    // when we use arrow functions then this will always points to global window object.
-    /// Thats why we cannot use this keyword with arrow functions 
-    
-};
+const x = document.querySelectorAll('p');
+x.forEach(x => {
+    x.innerText += ' Added text';
+})
 
-console.log(singer);
-console.log(singer.Name);
+const content = document.querySelector('.content');
+//content.innerHTML = '<h2> This is a new H2 </h2>';
 
-singer.age = 35;
-console.log(singer.age);
+const names = ['luigi', 'yoshi', 'raka'];
+names.forEach(person => {
+    content.innerHTML += `<p>${person}</p>`
+})
 
-console.log(typeof singer);
+// getAttribute and setAttribute
 
-// singer.Inhouse();
-// singer.Outhouse();
+const link = document.querySelector('a');
 
-singer.logSets();
+console.log(link.getAttribute('href'));
+link.setAttribute('href', 'https://www.thenetninja.co.uk');
+link.innerText = 'The Net Ninja Website';
 
-singer.logi();
+// const mssg = document.querySelector('p');
+// console.log(mssg.getAttribute('class'));
+// mssg.setAttribute('class', 'success');
+// mssg.setAttribute('style', 'color: green');
 
-// Inbuilt Objects
+const tittle = document.querySelector('h1');
+console.log(title.style);
+console.log(title.style.color);
 
-console.log(Math);
-console.log(Math.PI);
-console.log(Math.E);
+tittle.style.margin = '10px';
+tittle.style.color = 'green';
+tittle.style.fontSize = '30px';
 
-const area = 3.1;
+// Adding and Removing classes
 
-console.log(Math.round(area));
-console.log(Math.floor(area));
-console.log(Math.ceil(area));
-console.log(Math.trunc(area));
+const cont = document.querySelector('p');
 
-// To generate a random number
-const random = Math.random();
-console.log(random);
-console.log(Math.round(random * 100));
-
-/*
-    Primitive Types             Reference Types
-
-    - numbers                   - all types of objects
-    - strings                   - object literals    
-    - booleans                  - arrays
-    - null                      - functions
-    - undefined                 - dates
-    - symbols                   - all other objects
-*/
+console.log(cont.classList);
+cont.classList.add('success');
+cont.classList.remove('success');
+cont.classList.add('error');
